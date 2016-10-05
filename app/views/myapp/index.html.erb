@@ -1,0 +1,15 @@
+<% provide(:title, "Home") %>
+<!-- Main Content -->
+<%= link_to 'Create Blog', new_page_path %>
+<div class="row">
+	<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <% @pages.each do |page| %>
+            <div>						
+                <h2><%= link_to(page.title, page) %></h2>
+                <%= link_to "Edit", edit_page_path(page), class: "btn btn-md btn-primary" %>
+                <p>Published <%= time_ago_in_words (page.published_at) %> ago</p>
+            </div>
+            <hr>
+        <% end %>
+    </div>
+</div>
