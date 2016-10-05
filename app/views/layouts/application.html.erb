@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= yield(:title) %> | Blog</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title><%= yield(:title) %> | Blog</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <head class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
-      <nav class="navbar navbar-light bg-faded">
-        <%= link_to 'OPM', root_path, class: "navbar-brand" %>
+      <%= link_to 'OPM', root_path, id: "logo" %>
+      <nav class="navbar navbar-dark bg-inverse">        
         <ul class="nav navbar-nav">
           <li class="nav-item active">          
-            <%= link_to 'Home', root_path, class: "nav-link" %><span class="sr-only">(current)</span>
+            <%= link_to 'Home', root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Features</a>
@@ -25,9 +29,25 @@
     </div>
   </head>
 
-  <body>
+  <!-- content -->
+  <div class="container">
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
+    
+    <%= yield %>
+  </div>
+
+  <!-- Footer -->
+  <footer>
     <div class="container">
-        <%= yield %>
-    </div>    
-  </body>
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">                    
+          <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <%= debug(params) if Rails.env.development? %>
+</body>
 </html>
