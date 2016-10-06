@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <header class="navbar navbar-fixed-top navbar-inverse">
+  <header class="navbar navbar-default navbar-inverse">
     <div class="container">
       <%= link_to 'OPM', root_path, id: "logo" %>
       <nav class="navbar navbar-dark bg-inverse">        
@@ -28,7 +28,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", current_user %></li>
-                <li><%= link_to "Settings", '#' %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                 <li class="divider" role="separator"></li>
                 <li class="nav-item">
                   <%= link_to "Log out", logout_path, method: "delete" %>
