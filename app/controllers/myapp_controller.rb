@@ -1,5 +1,5 @@
 class MyappController < ApplicationController
   def index
-    @pages = Page.order("published_at DESC")
+    @micropost = current_user.microposts.build if logged_in?
   end 
 end

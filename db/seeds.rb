@@ -5,27 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Page.delete_all
+User.create!(name: "ThanhDat", email: "datthanh.9982@gmail.com", password: "Dell5537", password_confirmation: "Dell5537", admin: true)
 
-Page.create!(
-  title: 'My Second Post',  
-  body: 
-  %Q{### My List of Things To Do!
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@gmail.com"
+  password = "password"
+  User.create!(name: name, email: email, password: password, password_confirmation: password)
+end
 
-  Here is the list of things I wish to do!
-  
-  * write more posts
-  * write even more posts
-  * write even more posts!},
-  published_at: Time.now
-)
-
-Page.create!(
-  title: 'My Very First Post',  
-  body: %Q{### There Is Something You Should Know!
-
-  This is my very first post using markdown!
-
-  How do you like it?  I learned this from [RichOnRails.com](http://richonrails.com/articles/rendering-markdown-with-redcarpet)!},
-  published_at: Time.now - 1.day
-)
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.microposts.create!(content: content) }
+end
