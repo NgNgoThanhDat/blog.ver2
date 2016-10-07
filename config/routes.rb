@@ -5,8 +5,14 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get  '/signup',  to: 'users#new'  
-  resources :users
-  resources :microposts, only: [:create, :destroy]  
+  resources :users do
+  	member do
+      get :following, :followers
+    end
+  end
+  resources :microposts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+
   
   root 'myapp#index'
 
