@@ -2,10 +2,6 @@
 
  /* universal */
 
-// body {
-//   padding-top: 60px;
-// }
-
 section {
   overflow: auto;
 }
@@ -91,6 +87,10 @@ footer {
   }
 }
 
+.text-muted {
+  text-align: right;
+}
+
 /* sidebar */
 
 aside {
@@ -164,6 +164,10 @@ aside {
 
 .users.follow {
   padding: 0;
+}
+
+.follow-show {
+  margin-top: 20px;
 }
 
 /* mixins, variables, etc. */
