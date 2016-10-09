@@ -9,6 +9,7 @@ gem 'pg'
 gem 'puma', '~> 3.0'
 # Use devise to signup
 # gem 'devise'
+gem 'omniauth-twitter'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
