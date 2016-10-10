@@ -176,6 +176,7 @@ DEPENDENCIES
   faker
   jbuilder (~> 2.5)
   jquery-rails
+  omniauth
   omniauth-twitter
   pg
   puma (~> 3.0)

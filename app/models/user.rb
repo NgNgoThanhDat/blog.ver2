@@ -5,33 +5,32 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   attr_accessor :remember_token
-  before_save { email.downcase! }
-  validates :name, presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
-  validates :email, presence:   true, length: { maximum: 255 },
-  format:     { with: VALID_EMAIL_REGEX },
-  uniqueness: { case_sensitive: false }
-  has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+	before_save { email.downcase! }
+	validates :name, presence: true, length: { maximum: 50 }
+  	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  	validates :email, presence:   true, length: { maximum: 255 },
+                    format:     { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
+    has_secure_password
+    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  class << self
+    class << self
       # Returns the hash digest of the given string.
       def digest(string)
-       cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
-       BCrypt::Password.create(string, cost: cost)
-     end
+  	    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+  	    BCrypt::Password.create(string, cost: cost)
+  	  end
 
       # Returns a random token.
       def new_token
         SecureRandom.urlsafe_base64
       end
 
-      def from_omniauth(auth_hash)
-        user = find_or_create_by(uid: auth_hash['uid'], provider: auth_hash['provider'])
-        user.name = auth_hash['info']['name']
-        user.location = auth_hash['info']['location']
-        user.image_url = auth_hash['info']['image']
-        user.url = auth_hash['info']['urls']['Twitter']
+      def from_omniauth(auth)
+        user = find_or_create_by(uid: auth['uid'], provider: auth['provider'])
+        user.name = auth['info']['name']
+        user.email = "example@gmail.com"
+        user.password = "password"
         user.save!
         user
       end
@@ -52,7 +51,7 @@ class User < ApplicationRecord
   end
 
    # Returns true if the given token matches the digest.
-   def authenticated?(remember_token)
+  def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
