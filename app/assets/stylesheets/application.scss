@@ -49,7 +49,7 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 0.9em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -288,4 +288,10 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+/* dropdown-menu */
+.dropdown-menu {
+  min-width: 100px;
+  margin-top: 7px;  
 }
