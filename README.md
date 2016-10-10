@@ -1,10 +1,10 @@
-# Homework 1 - *Name of App*
+# Homework 1 - *Blog.ver2*
 
-**Name of your app** Trang web cho phép người dùng chia sẻ và cập nhật trạng thái. Due Date: 24:00 11/10/2016
+**Blog.ver2** Trang web cho phép người dùng chia sẻ và cập nhật trạng thái. Due Date: 24:00 11/10/2016
 
-Danh sách sinh viên: **Your Name Here**
+Danh sách sinh viên: **1312061 Lê Hồng Cường - 1312123 Nguyễn Ngô Thành Đạt**
 
-URL: **Insert your Heroku URL here**
+URL: **https://onepunchman-blog.herokuapp.com/**
 
 ## Chức năng
 
@@ -16,7 +16,7 @@ Danh sách chức năng **bắt buộc**:
 * [ ] Người dùng có thể tìm kiếm người dùng khác
 * [x] Người dùng có thể follow người dùng khác
 * [ ] Người dùng có thể thêm comment vào các bài đăng.
-* [ ] Người dùng có thể đăng nhập bằng Twitter qua OAuth(Sử dụng Omniauth Twitter)
+* [x] Người dùng có thể đăng nhập bằng Twitter qua OAuth(Sử dụng Omniauth Twitter)
 * [ ] Sử dụng Twitter API để cho phép tạo tweet lên Twitter của người dùng khi đăng trạng thái thành công (Sử dụng [Twitter Gem](https://github.com/sferik/twitter) và [đăng ký Application Token](https://apps.twitter.com))
 * [ ] Cần thể hiện số ký tự còn lại khi gõ (Twitter cho phép gõ trạng thái tối đa 140 ký tự)
 * [ ] Cần thực hiện AJAX và javascript để hạn chế nạp lại trang.
